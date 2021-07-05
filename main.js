@@ -1,10 +1,15 @@
 var canvas = document.getElementById("myCanvas");
 var ctx = canvas.getContext("2d");
 
+var nasa_mars_img_array = ["nasa_image_1.jpg", "nasa_image_2.jpg", "nasa_image_3.jpg", "nasa_image_4.png"];
+var random_number = Math.floor(Math.random()*4);
+
 var rover_width = 100;
 var rover_height = 90;
 
-var background_image = "mars.jpg";
+//var background_image = "mars.jpg";
+var background_image = nasa_mars_img_array[random_number];
+console.log(background_image);
 var rover_image = "rover.png";
 
 var rover_x = 10;
@@ -54,5 +59,41 @@ function my_keyDown(e) {
     if (keyPressed == 40) {
         down();
         console.log("down");
+    }
+}
+
+function left() {
+    if (rover_x >= 0) {
+        rover_x -= 10;
+        console.log("When left arrow key is pressed, X = " + rover_x + " and Y = " + rover_y);
+        uploadBackground();
+        uploadRover();
+    }
+}
+
+function up() {
+    if (rover_y >= 0) {
+        rover_y -= 10;
+        console.log("When up arrow key is pressed, X = " + rover_x + " and Y = " + rover_y);
+        uploadBackground();
+        uploadRover();
+    }
+}
+
+function right() {
+    if (rover_x <= 700) {
+        rover_x += 10;
+        console.log("When right arrow key is pressed, X = " + rover_x + " and Y = " + rover_y);
+        uploadBackground();
+        uploadRover();
+    }
+}
+
+function down() {
+    if (rover_y <= 500) {
+        rover_y += 10;
+        console.log("When down arrow key is pressed, X = " + rover_x + " and Y = " + rover_y);
+        uploadBackground();
+        uploadRover();
     }
 }
